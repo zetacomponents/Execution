@@ -38,7 +38,13 @@
     },
     "description": "Provides functionality to give feedback to your application's users when a fatal error happened or an uncaught exception was thrown.",
     "homepage": "https://github.com/zetacomponents",
-    "license": "apache2",
+    "license": "Apache-2.0",
     "name": "zetacomponents/execution",
-    "type": "library"
+    "type": "library",
+        "require": {
+            "zetacomponents/base": "*"
+        },
+        "require-dev": {
+            "zetacomponents/unit-test": "*"
+        }
 }
