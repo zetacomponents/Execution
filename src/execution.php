@@ -8,9 +8,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -44,11 +44,11 @@
  *         parent::onError( $exception );
  *     }
  * }
- * 
+ *
  * ezcExecution::init( 'myExecutionHandler' );
- * 
+ *
  * // ....
- * 
+ *
  * ezcExecution::cleanExit();
  * ?>
  * </code>
@@ -97,7 +97,7 @@ class ezcExecution
      * onError() method on in case of an error. The class name that you
      * pass should implement the ezcExecutionErrorHandler interface. This
      * method takes care of registering the uncaught exception and shutdown
-     * handlers. 
+     * handlers.
      *
      * @throws ezcExecutionInvalidCallbackException if an unknown callback
      *         class was passed.
@@ -106,7 +106,7 @@ class ezcExecution
      * @throws ezcExecutionAlreadyInitializedException if the environment was
      *         already initialized.
      *
-     * @param string $callbackClassName 
+     * @param string $callbackClassName
      * @return void
      */
     static public function init( $callbackClassName )
@@ -168,8 +168,8 @@ class ezcExecution
      *
      * With this method you signal the ezcExecution environment that your
      * application ended without errors. This is usually done just before you
-     * reach the end of your script, or just before you call 
-     * {@link http://www.php.net/exit exit()} or 
+     * reach the end of your script, or just before you call
+     * {@link http://www.php.net/exit exit()} or
      * {@link http://www.php.net/die die()}.
      *
      * @throws ezcExecutionNotInitializedException if the environment was not
@@ -178,7 +178,7 @@ class ezcExecution
      */
     static public function cleanExit()
     {
-        self::$cleanExit = true;        
+        self::$cleanExit = true;
     }
 
     /**
@@ -198,7 +198,7 @@ class ezcExecution
      */
     static public function exceptionCallbackHandler( Throwable $e )
     {
-        self::$cleanExit = true;        
+        self::$cleanExit = true;
         call_user_func( array( self::$callbackClassName, 'onError' ), $e );
     }
 
@@ -215,7 +215,7 @@ class ezcExecution
     {
         if ( !self::$cleanExit )
         {
-            self::$cleanExit = true;        
+            self::$cleanExit = true;
             call_user_func( array( self::$callbackClassName, 'onError' ) );
         }
     }
